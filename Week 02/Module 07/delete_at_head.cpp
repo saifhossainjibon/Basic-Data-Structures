@@ -43,29 +43,25 @@ void print_link_list(Node* &head){ //this line
         temp = temp->next;
     }
 }
-// Printing reverse linked list
-void print_reverse_linked_list(Node* temp){
-    if (temp==NULL){
-        return;
-    }
-    print_reverse_linked_list(temp->next);
-    cout<<temp->val<<endl;
+void delete_at_head(Node* &head)
+{
+    Node* deleteNode=head;
+    head=head->next;
+    delete deleteNode;
 }
-int main(){
-    Node* head=new Node(10);
-    Node* a=new Node(20);
-    Node* tail=new Node(30);
-    head->next=a;
-    a->next=tail;
-    // Node* head=NULL;
-    insert_at_head(head, 500);
-    insert_at_tail(head,tail,40);
-    insert_at_tail(head,tail,50);
-    insert_at_tail(head,tail,60);
-    
 
-    print_reverse_linked_list(head);
-    // print_link_list(head);
-    // cout<<"tail "<< tail->val;
+int main(){
+    Node* head=NULL;
+    Node* tail=NULL;
+    int val;
+    while(true){
+        cin>> val;
+        if(val==-1){
+            break;
+        }
+        insert_at_tail(head,tail,val);
+    }
+    delete_at_head(head);
+    print_link_list(head);
     return 0;
 }
